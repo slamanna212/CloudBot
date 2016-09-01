@@ -21,8 +21,8 @@ opt_in = ["#trollchromosomes","##trollmods","#SlamaTest"]
 
 @hook.command()
 def trolls(chan):
-		if chan not in opt_in:
-			return
+        if chan not in opt_in:
+            return
         response = "Here is our website: {} | The password is {}".format(TROLL_DATA[0], TROLL_DATA[1])
         return response
 
