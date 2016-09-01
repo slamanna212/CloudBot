@@ -17,7 +17,7 @@ def load_troll(bot):
     with codecs.open(os.path.join(bot.data_dir, "troll.txt"), encoding="utf-8") as f:
         TROLL_DATA = [line.strip() for line in f.readlines() if not line.startswith("//")]
 
-opt_in = ["#trollchromosomes","##trollmods",#SlamaTest"]
+opt_in = ["#trollchromosomes","##trollmods","#SlamaTest"]
 
 @hook.command()
 def trolls(chan):
