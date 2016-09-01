@@ -4,7 +4,7 @@ from cloudbot import hook
 from cloudbot.util import web, formatting
 
 shortcuts = {
-    'cloudbot': 'CloudBotIRC/CloudBot'
+    'cloudbot': 'slamanna212/CloudBot'
 }
 
 
