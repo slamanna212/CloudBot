@@ -46,3 +46,10 @@ def pets(chan):
             return
         response = "Wolf! Meow! Check out all of our awesome pets! They are purrrrfect! {} | Password: {}".format(TROLL_DATA[5], TROLL_DATA[6])
         return response
+
+@hook.command()
+def santa(chan):
+        if chan not in opt_in:
+            return
+        response = "Its time again for Troll Secret Santa!!! Info here: {} | Password: {}".format(TROLL_DATA[7], TROLL_DATA[8])
+        return response
