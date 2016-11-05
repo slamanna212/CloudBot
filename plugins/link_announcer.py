@@ -4,10 +4,9 @@ from bs4 import BeautifulSoup
 from contextlib import closing
 from cloudbot import hook
 
-# This will match ANY we url including youtube, reddit, twitch, etc... Some additional work needs to go into
-# not sending the web request etc if the match also matches an existing web regex.
-blacklist = re.compile('.*(reddit\.com|redd.it|youtube.com|youtu.be|spotify.com|twitter.com|twitch.tv|amazon.co|xkcd.com|amzn.co|steamcommunity.com|steampowered.com|newegg.com|vimeo.com).*', re.I)
-url_re = re.compile('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+~]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+# This will match any URL except the patterns defined in blacklist.
+blacklist = '.*(reddit\.com|redd\.it|youtube\.com|youtu\.be|spotify\.com|twitter\.com|twitch\.tv|amazon\.co|xkcd\.com|amzn\.co|steamcommunity\.com|steampowered\.com|newegg\.com|vimeo\.com).*'
+url_re = re.compile('(?!{})http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+~]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'.format(blacklist), re.I)
 
 opt_out = []
 
@@ -34,10 +33,9 @@ def bytesto(bytes, system = traditional):
 def print_url_title(message, match, chan):
     if chan in opt_out:
         return
-    if re.search(blacklist, match.group()):
-        return
     HEADERS = {
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.133 Mobile Safari/535.19'
+        'Accept-Language': 'en-US,en;q=0.5',
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36'
     }
     with closing(requests.get(match.group(), headers = HEADERS, stream = True, timeout=3)) as r:
         if not r.encoding:
