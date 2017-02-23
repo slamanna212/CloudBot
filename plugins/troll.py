@@ -48,8 +48,8 @@ def pets(chan):
         return response
 
 @hook.command()
-def santa(chan):
+def discord(chan):
         if chan not in opt_in:
             return
-        response = "Its time again for Troll Secret Santa!!! Info here: {} | Password: {}".format(TROLL_DATA[7], TROLL_DATA[8])
+        response = "Chat with us on discord! It even shows up here too!".format(TROLL_DATA[7])
         return response
