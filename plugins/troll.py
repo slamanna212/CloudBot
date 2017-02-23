@@ -51,5 +51,5 @@ def pets(chan):
 def discord(chan):
         if chan not in opt_in:
             return
-        response = "Chat with us on discord! It even shows up here too!".format(TROLL_DATA[7])
+        response = "Chat with us on discord! It even shows up here too! {}".format(TROLL_DATA[7])
         return response
